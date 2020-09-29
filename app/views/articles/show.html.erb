@@ -1,3 +1,13 @@
 <h1>Article details</h1>
+<p><strong>Article ID: </strong> <%= @article.id %> </p>
 <p><strong>Title:</strong> <%= @article.title %> </p>
 <p><strong>Description:</strong> <%= @article.description%> </p>
+
+<%= link_to 'Edit', edit_article_path(@article)%> &nbsp&nbsp&nbsp;
+<%= link_to 'Delete', article_path(@article), method: :Delete, data: {confirm: "Do you want to delete article-#{@article.id}?"}%> &nbsp&nbsp&nbsp;
+<%= link_to 'Back to list', articles_path%>
+
+<p>
+    <%= link_to 'Home', root_path%> |
+    <%= link_to 'About us', about_path%>
+</p>

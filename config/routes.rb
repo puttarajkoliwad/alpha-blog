@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'about', to:"pages#about"
 
   #Routes for resources can be generated with simple syntax: resources :articles
-  resources :articles, only:[:show, :index]
+  resources :articles, only:[:show, :index, :create, :new, :edit, :update, :destroy]
 
   #index: index is a special method that lists all the entries of a database table.
   #show: show is a method that shows any selected entry from the table.
