@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
+
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    # befpre_action runs the set_article method before running any of the actions mention in 'only[]'
+
     def show
-        @article = Article.find(params[:id])
+        #@article = Article.find(params[:id])   #Handled by private set_article
     end
 
     def index
@@ -8,7 +12,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = Article.new(params.require(:article).permit(:title, :description))
+        @article = Article.new(article_params)
         if @article.save
             flash[:notice] = "Article added successfully."
             redirect_to article_path(@article.id)   # only redirect_to @article OR redirect_to article_path(@article)  would also work.
@@ -22,12 +26,12 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-        @article = Article.find(params[:id])
+        #@article = Article.find(params[:id]) #Handled by private set_article
     end
 
     def update
-        @article = Article.find(params[:id])
-        if @article.update(params.require(:article).permit(:title, :description))
+        #@article = Article.find(params[:id])   #Handled by private set_article
+        if @article.update(article_params)
             flash[:notice] = "Article updated successufully."
             redirect_to @article
         else
@@ -36,8 +40,21 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
+        #@article = Article.find(params[:id])      #Handled by private set_article
+        elem_id = @article.id
         @article.destroy
+        flash[:notice] = "Element #{elem_id} deleted!"
         redirect_to articles_path
+    end
+
+    private
+    #Everything below this line is valid only within this controller
+
+    def set_article
+        @article = Article.find(params[:id])
+    end
+
+    def article_params
+        params.require(:article).permit(:title, :description)
     end
 end
