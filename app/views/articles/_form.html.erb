@@ -1,26 +1,37 @@
-<% if @article.errors.any? %>
-<p>
-    <h2>Could not EDIT the article due to following errors:</h2>
-    <ul>
-        <% @article.errors.full_messages.each do |err| %>
-        <li><%= err %></li>
-        <% end %>
-    </ul>
-</p>
-<% end %>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <%= render "shared/errors"%>
+            <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+                <div class="form-group row">
+                    <%= f.label :title, class:"col-2 col-form-label text-light"%>         <!-- #This is visible as <label for="article_title">Title</label> -->
+                    <div class="col-10">
+                        <%= f.text_field :title, class:"form-control"%>
+                    </div>
+                </div>
 
-<%= form_with(model: @article, local: true) do |f| %>
-<p>
-    <%= f.label :title%><br/>          <!-- #This is visible as <label for="article_title">Title</label> -->
-    <%= f.text_field :title%>
-</p>
+                <div class="form-group row">
+                    <%= f.label :description, class:"col-2 col-form-label text-light"%>
+                    <div class="col-10">
+                        <%= f.text_area :description, rows:10, class:"form-control"%>
+                    </div>
+                </div>
 
-<p>
-    <%= f.label :description%><br/>
-    <%= f.text_area :description%>
-</p>
+                <div class="form-group row justify-content-center">
+                    <%= f.submit class:"btn btn-outline-light btn-lg"%>
+                </div>
+            <% end %>
 
-<p>
-    <%= f.submit%>
-</p>
-<% end %>
+            <div class="row justify-content-center">
+                <div class="md-3">
+                    <%= link_to '[ Back to list ]', articles_path, rows:2, class:"text-info"%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
