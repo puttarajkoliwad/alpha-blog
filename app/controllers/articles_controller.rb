@@ -12,7 +12,9 @@ class ArticlesController < ApplicationController
     end
 
     def create
+        user = User.find(3)
         @article = Article.new(article_params)
+        @article.user_id = user.id
         if @article.save
             flash[:notice] = "Article added successfully."
             redirect_to article_path(@article.id)   # only redirect_to @article OR redirect_to article_path(@article)  would also work.
