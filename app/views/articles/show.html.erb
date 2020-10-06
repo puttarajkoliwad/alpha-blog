@@ -7,7 +7,7 @@
             <div class="card shadow bg-white">
                 <div class="card-header text-center font-italic">
                     <%= @article.id %> 
-                    by Puttaraj Koliwad
+                    by <%= @article.user.username %>
                 </div>
                 <div class="card-body text-center">
                     <div class="card-text text-left"><%= simple_format(@article.description) %></div>

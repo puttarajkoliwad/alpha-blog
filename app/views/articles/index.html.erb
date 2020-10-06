@@ -14,7 +14,7 @@
                     <div class="card shadow bg-white">
                         <div class="card-header text-center font-italic">
                             <%= arti.id%>
-                            by Puttaraj Koliwad
+                            by <%= arti.user.username %>
                         </div>
                         <div class="card-body text-center">
                             <h5 class="card-title"><%= link_to arti.title, article_path(arti), class:"text-success" %></h5>
