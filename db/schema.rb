@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_132543) do
+ActiveRecord::Schema.define(version: 2020_10_06_165152) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_132543) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "pasword_digest"
+    t.string "password_digest"
   end
 
 end
