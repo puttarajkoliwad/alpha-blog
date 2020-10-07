@@ -3,11 +3,11 @@
 
     <div class="container" style="background-color:lightgrey">
         <div class="row justify-content-md-center mt-4">
-            <div class="col-8">
+            <div class="col-8 mt-4">
                 <div class="card shadow bg-white">
                     <div class="card-header text-center font-italic">
-                        <%= @article.id %> 
-                        by <%= @article.user.username %>
+                        <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+                        by <%= link_to @article.user.username, user_path(@article.user) %>
                     </div>
                     <div class="card-body text-center">
                         <div class="card-text text-left"><%= simple_format(@article.description) %></div>

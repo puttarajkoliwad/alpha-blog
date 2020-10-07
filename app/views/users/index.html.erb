@@ -1,11 +1,17 @@
 <div style="background-color:lightgrey">
-    <h1 class="text-center text-success">Users List</h1>
+    <h1 class="text-center text-success">Alpha Bloggers</h1>
+
+    
 
     <div class="container" style="background-color:lightgrey">
         <div class="row justify-content-md-center mt-4">
             <div class="col-8">
                 <%= link_to 'Create new article', new_article_path, class:"btn btn-outline-success mt-4"%>
             </div>
+        </div>
+
+        <div class="flickr_pagination">
+            <%= will_paginate @users, :container => false %>
         </div>
 
         <% @users.each do |user|%>
@@ -15,25 +21,29 @@
                         
                         <div class="card-header text-center font-italic">
                             <%= user.id%>
-                            Username: <%= user.username %>
+                            <%= link_to user.username, user %>
                         </div>
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title"><%= link_to user.username, article_path(user), class:"text-success" %></h5>
-                            <p class="card-text"><%= user.email %> </p>
-                            <%= link_to "View", user_path(user), class:"btn btn-outline-secondary"%>
-                            <%= link_to "Edit", edit_user_path(user), class:"btn btn-outline-success"%>
-                            <%= link_to "Delete", users_path(user), method: :delete, class:"btn btn-outline-danger" %>
+                            <h5 class="card-title">
+                                <%= link_to gravatar_for(user, size: 150), user%>
+                                <%= link_to pluralize(user.articles.count, "article"), user, class:"text-success" %>
+                            </h5>
+                            <%= link_to "View profile", user_path(user), class:"btn btn-outline-secondary"%>
+                            <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-success"%>
                         </div>
 
                         <div class="card-footer text-muted">
-                            <small>Created <%= time_ago_in_words(user.created_at )%> ago, 
-                            Edited <%= time_ago_in_words(user.updated_at)%> ago</small>
+                            <small>Joined <%= time_ago_in_words(user.created_at )%> ago</small>
                         </div>
                     </div>
                 </div>
             </div>
         <% end %>
+
+        <div class="flickr_pagination mt-4">
+            <%= will_paginate @users, :container => false %>
+        </div>
 
         <div class="row justify-content-md-center mt-4" style="margin-left:750px;">
             <div class="col-12">
@@ -41,7 +51,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-md-center">
+        <div class="row justify-content-md-center mb-4">
             <div class="col-8">
                 <%= link_to 'Home', root_path, class:"btn btn-outline-success mt-4"%> 
                 <div class="col-12" style="margin-top: -60px; margin-left:620px">
