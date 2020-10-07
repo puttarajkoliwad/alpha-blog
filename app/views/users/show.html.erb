@@ -1,22 +1,22 @@
 <div class="container page-content bg-light" style="background-color:grey">
-    <h1 class="text-center text-success"><%= @article.title %></h1>
+    <h1 class="text-center text-success"><%= @user.username %></h1>
 
     <div class="container" style="background-color:lightgrey">
         <div class="row justify-content-md-center mt-4">
             <div class="col-8">
                 <div class="card shadow bg-white">
                     <div class="card-header text-center font-italic">
-                        <%= @article.id %> 
-                        by <%= @article.user.username %>
+                        User: <%= @user.username %>
                     </div>
                     <div class="card-body text-center">
-                        <div class="card-text text-left"><%= simple_format(@article.description) %></div>
-                        <%= link_to "Edit", edit_article_path(@article), class:"btn btn-outline-success"%>
-                        <%= link_to "Delete", article_path(@article), method: :delete, class:"btn btn-outline-danger"%>
+                        <div class="card-text text-left">User ID: <%= @user.id %></div>
+                        <div class="card-text text-left">E-mail: <%= @user.email %></div>
+                        <%= link_to "Edit", edit_user_path(@user), class:"btn btn-outline-success"%>
+                        <%= link_to "Delete", users_path(@user), method: :delete, class:"btn btn-outline-danger"%>
                     </div>
                     <div class="card-footer text-muted">
-                        <small>Created <%= time_ago_in_words(@article.created_at )%> ago, 
-                        Edited <%= time_ago_in_words(@article.updated_at)%> ago</small>
+                        <small>Created <%= time_ago_in_words(@user.created_at )%> ago, 
+                        Edited <%= time_ago_in_words(@user.updated_at)%> ago</small>
                     </div>
                 </div>
             </div>

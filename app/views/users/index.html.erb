@@ -8,24 +8,27 @@
             </div>
         </div>
 
-        <% @articles.each do |arti|%>
+        <% @users.each do |user|%>
             <div class="row justify-content-md-center mt-4">
                 <div class="col-8">
                     <div class="card shadow bg-white">
+                        
                         <div class="card-header text-center font-italic">
-                            <%= arti.id%>
-                            by <%= arti.user.username %>
+                            <%= user.id%>
+                            Username: <%= user.username %>
                         </div>
+                        
                         <div class="card-body text-center">
-                            <h5 class="card-title"><%= link_to arti.title, article_path(arti), class:"text-success" %></h5>
-                            <p class="card-text"><%= truncate(arti.description, length:100)%></p>
-                            <%= link_to "View", article_path(arti), class:"btn btn-outline-secondary"%>
-                            <%= link_to "Edit", edit_article_path(arti), class:"btn btn-outline-success"%>
-                            <%= link_to "Delete", article_path(arti), method: :delete, class:"btn btn-outline-danger"%>
+                            <h5 class="card-title"><%= link_to user.username, article_path(user), class:"text-success" %></h5>
+                            <p class="card-text"><%= user.email %> </p>
+                            <%= link_to "View", user_path(user), class:"btn btn-outline-secondary"%>
+                            <%= link_to "Edit", edit_user_path(user), class:"btn btn-outline-success"%>
+                            <%= link_to "Delete", users_path(user), method: :delete, class:"btn btn-outline-danger" %>
                         </div>
+
                         <div class="card-footer text-muted">
-                            <small>Created <%= time_ago_in_words(arti.created_at )%> ago, 
-                            Edited <%= time_ago_in_words(arti.updated_at)%> ago</small>
+                            <small>Created <%= time_ago_in_words(user.created_at )%> ago, 
+                            Edited <%= time_ago_in_words(user.updated_at)%> ago</small>
                         </div>
                     </div>
                 </div>
@@ -34,7 +37,7 @@
 
         <div class="row justify-content-md-center mt-4" style="margin-left:750px;">
             <div class="col-12">
-            <%= link_to 'Create new article', new_article_path, class:"btn btn-outline-success mt-4 bg-light"%>
+            <%= link_to 'Sign up!', signup_path, class:"btn btn-outline-success mt-4 bg-light"%>
             </div>
         </div>
 
