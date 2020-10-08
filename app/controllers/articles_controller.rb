@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        user = User.find(3)
+        user = current_user
         @article = Article.new(article_params)
         @article.user_id = user.id
         if @article.save

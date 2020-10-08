@@ -30,7 +30,9 @@
                                 <%= link_to pluralize(user.articles.count, "article"), user, class:"text-success" %>
                             </h5>
                             <%= link_to "View profile", user_path(user), class:"btn btn-outline-secondary"%>
-                            <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-success"%>
+                            <% if logged_in? && user == current_user %>
+                                <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-success"%>
+                            <% end %>
                         </div>
 
                         <div class="card-footer text-muted">
