@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:show, :index]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
     # befpre_action runs the set_article method before running any of the actions mention in 'only[]'
 
     def show
@@ -58,5 +60,12 @@ class ArticlesController < ApplicationController
 
     def article_params
         params.require(:article).permit(:title, :description)
+    end
+
+    def require_same_user
+        if current_user != @article.user && !current_user.admin?
+            flash[:alert] = "You can only edit/delete your own articles!"
+            redirect_to @article
+        end
     end
 end

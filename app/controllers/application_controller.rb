@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
+    def require_user
+        if !logged_in?
+            flash[:notice] = "You should be logged in to perform this operation!"
+            redirect_to login_path
+        end
+    end
+
 end
