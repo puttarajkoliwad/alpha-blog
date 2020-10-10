@@ -1,6 +1,8 @@
 #In order to communicate with the our 'articles' table, we need to create a model('article.rb') for it.
 class Article < ApplicationRecord
   belongs_to :user
+  has_many :article_categories
+  has_many :categories, through: :article_categories
 
 #Model file for database is used to enforce constraints/validations for our tables.
 # validates :<column_name>, <constraint1>:<constraint value>, <constraint2>:<constraint value>

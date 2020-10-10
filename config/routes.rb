@@ -19,10 +19,11 @@ Rails.application.routes.draw do
   post 'login', to:"sessions#create"
   delete 'logout', to:"sessions#destroy"
 
+
+  resources :categories, except: [:destroy]
+
   
 
   #index: index is a special method that lists all the entries of a database table.
   #show: show is a method that shows any selected entry from the table.
 end
-
-#jgh
