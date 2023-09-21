@@ -10,7 +10,12 @@ class ArticlesController < ApplicationController
     end
 
     def index
-        @articles = Article.paginate(page: params[:page], per_page: 5)
+        articles = if params[:title]
+            Article.where("title like ?", "%#{params[:title]}%")
+        else
+            Article.all
+        end
+        @articles = articles.paginate(page: params[:page], per_page: 5)
     end
 
     def create
