@@ -19,6 +19,8 @@ Things you may want to cover:
 	- rails webpacker:install
 	- rails assets:precompile OR `rails assets:clobber && rails assets:precompile assets:clean`
 
+	- Also available in `lib/tasks/running_steps.txt`
+
 * Database creation
 
 * Database initialization
