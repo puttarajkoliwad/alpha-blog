@@ -1,0 +1,9 @@
+Steps to get this running:
+
+1. bundle install
+2. rake admin:create
+// 3. yarn add bootstrap
+4. yarn install
+//5. rails webpacker:install
+5. export NODE_OPTIONS=--openssl-legacy-provider
+6. rails assets:precompile
